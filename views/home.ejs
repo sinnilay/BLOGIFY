@@ -4,6 +4,22 @@
    <%- include("./partials/head") %>
    <title>HOME-PAGE</title>
    <style>
+    footer {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  h5 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  .footer-image img {
+    transition: transform 0.3s ease;
+  }
+  .footer-image img:hover {
+    transform: scale(1.05);
+  }
+  hr {
+    margin: 10px 0;
+  }
      body {
        background-color: blanchedalmond;
      }
@@ -87,6 +103,31 @@
        </div>
      </div>
    <% } %>
+
+   <footer class="bg-dark text-white text-center py-4 mt-auto">
+    <br>
+    <div class="container">
+      <!-- Flexbox for Alignment -->
+      <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+        
+        <!-- Text Section -->
+        <div class="footer-text mb-2 mb-md-0">
+          <h5 class="font-weight-bold">Developed and Managed by NILAY SINGH</h5>
+        </div>
+        <br>
+        <!-- Image Section -->
+        <div class="footer-image mb-2 mb-md-0">
+          <img src="https://cdn.vectorstock.com/i/1000v/14/64/monkey-ape-coder-logo-mascot-programmer-vector-28641464.jpg" alt="Nilay Singh" class="img-fluid rounded-circle shadow" style="width: 70px; height: 70px; object-fit: cover;">
+        </div>
+      </div>
+      
+      <!-- Line Separator -->
+      <hr class="bg-light w-75 mx-auto" style="opacity: 0.3;">
+  
+      <!-- Copyright Section -->
+      <p class="text-muted mb-0">© 2024 All Rights Reserved</p>
+    </div>
+  </footer>
    
    <%- include("./partials/script") %>
 </body>
