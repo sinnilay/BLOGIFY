@@ -60,6 +60,6 @@ app.get("/",async (req,res)=>{
 app.use('/user',UserRouter)
 app.use('/blog',BlogRouter)
 app.listen(PORT,()=>{
-    console.log("SERVOR IS UP AT PORT NUMBER 8005");
+    console.log("SERVOR IS UP AT PORT NUMBER ",PORT);
 })
 

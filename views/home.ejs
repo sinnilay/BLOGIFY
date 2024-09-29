@@ -4,24 +4,36 @@
    <%- include("./partials/head") %>
    <title>HOME-PAGE</title>
    <style>
-    footer {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  h5 {
-    font-size: 1.2rem;
-    margin: 0;
-  }
-  .footer-image img {
-    transition: transform 0.3s ease;
-  }
-  .footer-image img:hover {
-    transform: scale(1.05);
-  }
-  hr {
-    margin: 10px 0;
-  }
+     html, body {
+       height: 100%;
+     }
      body {
        background-color: blanchedalmond;
+       display: flex;
+       flex-direction: column;
+     }
+     main {
+       flex-grow: 1; /* Ensures that main content takes up available space */
+     }
+     footer {
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       background-color: #343a40;
+       color: white;
+       text-align: center;
+       padding: 10px 0;
+     }
+     h5 {
+       font-size: 1.2rem;
+       margin: 0;
+     }
+     .footer-image img {
+       transition: transform 0.3s ease;
+     }
+     .footer-image img:hover {
+       transform: scale(1.05);
+     }
+     hr {
+       margin: 10px 0;
      }
      h1 {
        text-align: center;
@@ -40,9 +52,6 @@
        border-color: #0056b3;
      }
      @media (max-width: 576px) {
-       body {
-         background-color: #f7f7f7;
-       }
        h1 {
          font-size: 24px;
          margin-top: 15px;
@@ -55,80 +64,71 @@
 </head>
 <body>
    <%- include("./partials/nav") %>
-   <br>
-   <% if (locals.no_blog) { %>
-     <div class="container text-center">
-       <h2>NO BLOG FOUND</h2>
-     </div>
-   <% } %>
-   
-   <% if (locals.blogs) { %>
-     <h1>YOUR BLOGS</h1>
+
+   <main>
      <br>
-     <div class="container">
-       <div class="row">
-         <% blogs.forEach(blog => { %>
-           <!-- Responsive grid for different screen sizes -->
-           <div class="col-sm-6 col-md-4 col-lg-3">
-             <div class="card mb-4">
-               <img src="/<%= blog.ImageUrl %>" class="card-img-top" alt="IMG">
-               <div class="card-body">
-                 <h5 class="card-title"><%= blog.title %></h5>
-                 <a href="/blog/view/<%= blog._id %>" class="btn btn-primary">READ</a>
-                 <a href="/blog/delete/<%= blog._id %>" class="btn btn-danger">Delete</a>
+     <% if (locals.no_blog) { %>
+       <div class="container text-center">
+         <h2>NO BLOG FOUND</h2>
+       </div>
+     <% } %>
+     
+     <% if (locals.blogs) { %>
+       <h1>YOUR BLOGS</h1>
+       <br>
+       <div class="container">
+         <div class="row">
+           <% blogs.forEach(blog => { %>
+             <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="card mb-4">
+                 <img src="/<%= blog.ImageUrl %>" class="card-img-top" alt="IMG">
+                 <div class="card-body">
+                   <h5 class="card-title"><%= blog.title %></h5>
+                   <a href="/blog/view/<%= blog._id %>" class="btn btn-primary">READ</a>
+                   <a href="/blog/delete/<%= blog._id %>" class="btn btn-danger">Delete</a>
+                 </div>
                </div>
              </div>
-           </div>
-         <% }) %>
+           <% }) %>
+         </div>
        </div>
-     </div>
-   <% } else if (locals.all_blog) { %>
-     <h1>ALL USERS BLOGS</h1>
-     <br>
-     <div class="container">
-       <div class="row">
-         <% all_blog.forEach(b => { %>
-           <!-- Responsive grid for different screen sizes -->
-           <div class="col-sm-6 col-md-4 col-lg-3">
-             <div class="card mb-4">
-               <img src="/<%= b.ImageUrl %>" class="card-img-top" alt="IMG">
-               <div class="card-body">
-                 <h5 class="card-title">Created By: <%= b.createdby.fullname %></h5>
-                 <h5 class="card-title">Title: <%= b.title %></h5>
-                 <a href="/blog/view/<%= b._id %>" class="btn btn-primary">READ</a>
+     <% } else if (locals.all_blog) { %>
+       <h1>ALL USERS BLOGS</h1>
+       <br>
+       <div class="container">
+         <div class="row">
+           <% all_blog.forEach(b => { %>
+             <div class="col-sm-6 col-md-4 col-lg-3">
+               <div class="card mb-4">
+                 <img src="/<%= b.ImageUrl %>" class="card-img-top" alt="IMG">
+                 <div class="card-body">
+                   <h5 class="card-title">Created By: <%= b.createdby.fullname %></h5>
+                   <h5 class="card-title">Title: <%= b.title %></h5>
+                   <a href="/blog/view/<%= b._id %>" class="btn btn-primary">READ</a>
+                 </div>
                </div>
              </div>
-           </div>
-         <% }) %>
+           <% }) %>
+         </div>
        </div>
-     </div>
-   <% } %>
+     <% } %>
+   </main>
 
    <footer class="bg-dark text-white text-center py-4 mt-auto">
-    <br>
-    <div class="container">
-      <!-- Flexbox for Alignment -->
-      <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-        
-        <!-- Text Section -->
-        <div class="footer-text mb-2 mb-md-0">
-          <h5 class="font-weight-bold">Developed and Managed by NILAY SINGH</h5>
-        </div>
-        <br>
-        <!-- Image Section -->
-        <div class="footer-image mb-2 mb-md-0">
-          <img src="https://cdn.vectorstock.com/i/1000v/14/64/monkey-ape-coder-logo-mascot-programmer-vector-28641464.jpg" alt="Nilay Singh" class="img-fluid rounded-circle shadow" style="width: 70px; height: 70px; object-fit: cover;">
-        </div>
-      </div>
-      
-      <!-- Line Separator -->
-      <hr class="bg-light w-75 mx-auto" style="opacity: 0.3;">
-  
-      <!-- Copyright Section -->
-      <p class="text-muted mb-0">© 2024 All Rights Reserved</p>
-    </div>
-  </footer>
-   
+     <div class="container">
+       <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+         <div class="footer-text mb-2 mb-md-0">
+           <h5 class="font-weight-bold">Developed and Managed by NILAY SINGH</h5>
+         </div>
+         <div class="footer-image mb-2 mb-md-0">
+           <img src="https://cdn.vectorstock.com/i/1000v/14/64/monkey-ape-coder-logo-mascot-programmer-vector-28641464.jpg" alt="Nilay Singh" class="img-fluid rounded-circle shadow" style="width: 70px; height: 70px; object-fit: cover;">
+         </div>
+       </div>
+       <hr class="bg-light w-75 mx-auto" style="opacity: 0.3;">
+       <p class="text-muted mb-0">© 2024 All Rights Reserved</p>
+     </div>
+   </footer>
+
    <%- include("./partials/script") %>
 </body>
 </html>
