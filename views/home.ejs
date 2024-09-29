@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%- include("./partials/head") %>
+   <title>HOME-PAGE</title>
+   <style>
+     body {
+       background-color: blanchedalmond;
+     }
+     h1 {
+       text-align: center;
+       margin-top: 20px;
+       color: #343a40;
+     }
+     .card {
+       transition: transform 0.2s, box-shadow 0.2s;
+     }
+     .card:hover {
+       transform: translateY(-5px);
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+     }
+     .btn-primary:hover {
+       background-color: #0056b3;
+       border-color: #0056b3;
+     }
+     @media (max-width: 576px) {
+       body {
+         background-color: #f7f7f7;
+       }
+       h1 {
+         font-size: 24px;
+         margin-top: 15px;
+       }
+       .card {
+         margin-bottom: 15px;
+       }
+     }
+   </style>
+</head>
+<body>
+   <%- include("./partials/nav") %>
+   <br>
+   <% if (locals.no_blog) { %>
+     <div class="container text-center">
+       <h2>NO BLOG FOUND</h2>
+     </div>
+   <% } %>
+   
+   <% if (locals.blogs) { %>
+     <h1>YOUR BLOGS</h1>
+     <br>
+     <div class="container">
+       <div class="row">
+         <% blogs.forEach(blog => { %>
+           <!-- Responsive grid for different screen sizes -->
+           <div class="col-sm-6 col-md-4 col-lg-3">
+             <div class="card mb-4">
+               <img src="/<%= blog.ImageUrl %>" class="card-img-top" alt="IMG">
+               <div class="card-body">
+                 <h5 class="card-title"><%= blog.title %></h5>
+                 <a href="/blog/view/<%= blog._id %>" class="btn btn-primary">READ</a>
+                 <a href="/blog/delete/<%= blog._id %>" class="btn btn-danger">Delete</a>
+               </div>
+             </div>
+           </div>
+         <% }) %>
+       </div>
+     </div>
+   <% } else if (locals.all_blog) { %>
+     <h1>ALL USERS BLOGS</h1>
+     <br>
+     <div class="container">
+       <div class="row">
+         <% all_blog.forEach(b => { %>
+           <!-- Responsive grid for different screen sizes -->
+           <div class="col-sm-6 col-md-4 col-lg-3">
+             <div class="card mb-4">
+               <img src="/<%= b.ImageUrl %>" class="card-img-top" alt="IMG">
+               <div class="card-body">
+                 <h5 class="card-title">Created By: <%= b.createdby.fullname %></h5>
+                 <h5 class="card-title">Title: <%= b.title %></h5>
+                 <a href="/blog/view/<%= b._id %>" class="btn btn-primary">READ</a>
+               </div>
+             </div>
+           </div>
+         <% }) %>
+       </div>
+     </div>
+   <% } %>
+   
+   <%- include("./partials/script") %>
+</body>
+</html>

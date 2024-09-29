@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%- include("./partials/head") %>
+    <title>HOME-PAGE</title>
+    <style>
+      body {
+        background-color: #f8f9fa; /* Light background for better readability */
+        color: #343a40; /* Dark color for text */
+      }
+      h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #007bff;
+      }
+      img {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+        max-width: 100%;
+        height: auto;
+      }
+      .blog-body {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        white-space: pre-wrap; /* This ensures newlines are displayed properly */
+        background-color: #ffffff; /* White background for the text area */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      @media (max-width: 576px) {
+        h2 {
+          font-size: 1.5rem; /* Smaller font size for mobile */
+        }
+        img {
+          width: 100%; /* Full width for smaller screens */
+        }
+      }
+    </style>
+</head>
+<body>
+    <%- include("./partials/nav") %>
+     
+    <div class="container mt-3">
+     <!-- Blog Title -->
+     <h2 class="text-center">Title: <%= Read_blog.title %></h2>
+     <br>
+
+     <!-- Blog Image -->
+     <div class="text-center">
+       <img src="/<%= Read_blog.ImageUrl %>" alt="IMG" class="img-fluid">
+     </div>
+     <br>
+     
+     <!-- Blog Body -->
+     <div class="blog-body">
+       <h2><u>Body:</u></h2>
+       <p><%= Read_blog.body %></p>
+     </div>
+    </div>
+
+    <%- include("./partials/script") %>
+</body>
+</html>
+
+
+
