@@ -20,7 +20,7 @@ router.post ('/signup', async(req,res)=>{
         })
         // console.log(user);
         res.render("signup",{
-            msg:"ACOOUNT CREATED SUCESS"
+            msg:"ACOOUNT CREATED SUCCESSFULLY"
         })
         // res.redirect('/')
     } catch (error) {

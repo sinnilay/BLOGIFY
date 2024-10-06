@@ -42,7 +42,9 @@
           </form>
     </div>
     <% if (locals.msg) { %>
-     <p><%= msg %></p>
+      <div class="alert alert-success" role="alert">
+       <%= msg %>
+      </div>
     <% } %>
     <%- include("./partials/script") %>
 </body>
