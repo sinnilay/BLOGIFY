@@ -6,15 +6,20 @@
    <style>
      html, body {
        height: 100%;
+       margin: 0;
+       padding: 0;
+
      }
      body {
       background: url("https://media.gettyimages.com/id/1370464731/video/abstract-connection-dots-4k.jpg?s=640x640&k=20&c=LbyU3Ty5YuZ0rCYp2fNOi71ErNOH3NCM4Z_uvlaulek=");
       background-size: cover;
       background-repeat: no-repeat;
+      background-attachment: fixed;
        /* background-color: blanchedalmond; */
 
        display: flex;
        flex-direction: column;
+       min-height: 100vh; 
      }
      main {
        flex-grow: 1; /* Ensures that main content takes up available space */
