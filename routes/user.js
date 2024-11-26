@@ -44,7 +44,7 @@ router.post('/signup', async (req, res) => {
 
     try {
         // Attempt to send the email
-        await sendmail(email);
+        
 
         // If email is sent successfully, create the user
         const user = await User.create({
@@ -52,7 +52,11 @@ router.post('/signup', async (req, res) => {
             email,
             password,
         });
-
+        if(user){
+            
+            await sendmail(email);
+        }
+       
         console.log(user);
         res.render("signup", {
             msg: "ACCOUNT CREATED SUCCESSFULLY",
