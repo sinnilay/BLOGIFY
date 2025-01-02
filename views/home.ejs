@@ -93,7 +93,7 @@
            <% blogs.forEach(blog => { %>
              <div class="col-sm-6 col-md-4 col-lg-3">
                <div class="card mb-4">
-                 <img src="/<%= blog.ImageUrl %>" class="card-img-top" alt="IMG">
+                 <img src="<%= blog.ImageUrl %>" class="card-img-top" alt="IMG">
                  <div class="card-body">
                    <h5 class="card-title"><%= blog.title %></h5>
                    <a href="/blog/view/<%= blog._id %>" class="btn btn-primary">READ</a>
@@ -112,7 +112,7 @@
            <% all_blog.forEach(b => { %>
              <div class="col-sm-6 col-md-4 col-lg-3">
                <div class="card mb-4">
-                 <img src="/<%= b.ImageUrl %>" class="card-img-top" alt="IMG">
+                 <img src="<%= b.ImageUrl %>" class="card-img-top" alt="IMG">
                  <div class="card-body">
                    <h5 class="card-title">Created By: <%= b.createdby.fullname %></h5>
                    <h5 class="card-title">Title: <%= b.title %></h5>
